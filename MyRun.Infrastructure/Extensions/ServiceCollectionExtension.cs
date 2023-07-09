@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyRun.Infrastructure.Persistance;
+using MyRun.Infrastructure.Seeders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,10 @@ namespace MyRun.Infrastructure.Extensions
             services.AddDbContext<MyRunDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("MyRun")));
             //Register DbContext and get ConnectionString
+
+            services.AddScoped<RaceSeeder>();
+            services.AddScoped<RunnerProfileSeeder>();
+            services.AddScoped<WorkoutSeeder>();
         }
     }
 }
