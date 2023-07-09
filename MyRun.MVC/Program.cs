@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyRun.Infrastructure.Persistance;
 using MyRun.Infrastructure.Extensions;
+using MyRun.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,16 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+
+var seederRace = scope.ServiceProvider.GetRequiredService<RaceSeeder>();
+var seederProfile = scope.ServiceProvider.GetRequiredService<RunnerProfileSeeder>();
+var seederWorkout = scope.ServiceProvider.GetRequiredService<WorkoutSeeder>();
+
+await seederRace.Seed();
+await seederProfile.Seed();
+await seederWorkout.Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
