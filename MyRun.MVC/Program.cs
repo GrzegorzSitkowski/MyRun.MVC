@@ -1,7 +1,10 @@
+using MyRun.Infrastructure.Persistance;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MyRunDbContext>();
 
 var app = builder.Build();
 

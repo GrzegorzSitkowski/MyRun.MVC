@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyRun.Application\MyRun.Application.csproj" />
+    <ProjectReference Include="..\MyRun.Infrastructure\MyRun.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
