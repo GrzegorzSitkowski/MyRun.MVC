@@ -1,10 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using MyRun.Infrastructure.Persistance;
+using MyRun.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<MyRunDbContext>();
+
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
