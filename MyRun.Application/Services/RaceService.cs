@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyRun.Application.Services
 {
-    public  class RaceService
+    public class RaceService : IRaceService
     {
         private readonly IRaceRepository _raceRepository;
 
