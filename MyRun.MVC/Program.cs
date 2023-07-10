@@ -1,7 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using MyRun.Infrastructure.Persistance;
 using MyRun.Infrastructure.Extensions;
 using MyRun.Infrastructure.Seeders;
+using MyRun.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +9,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
