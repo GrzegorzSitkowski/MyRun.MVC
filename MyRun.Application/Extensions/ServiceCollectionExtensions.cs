@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyRun.Application.Mappings;
 using MyRun.Application.Services;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace MyRun.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IRaceService, RaceService>();
+
+            services.AddAutoMapper(typeof(MyRunMappingProfile));
         }
     }
 }
