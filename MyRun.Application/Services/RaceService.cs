@@ -1,4 +1,6 @@
-﻿using MyRun.Domain.Interfaces;
+﻿using AutoMapper;
+using MyRun.Application.Race;
+using MyRun.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +12,18 @@ namespace MyRun.Application.Services
     public class RaceService : IRaceService
     {
         private readonly IRaceRepository _raceRepository;
+        private readonly IMapper _mapper;
 
-        public RaceService(IRaceRepository raceRepository)
+        public RaceService(IRaceRepository raceRepository, IMapper mapper)
         {
             _raceRepository = raceRepository;
+            _mapper = mapper;
         }
 
-        public async Task Create(Domain.Entities.Race race)
+        public async Task Create(RaceDto raceDto)
         {
+            var race = _mapper.Map<Domain.Entities.Race>(raceDto);
+
             await _raceRepository.Create(race);
         }
     }

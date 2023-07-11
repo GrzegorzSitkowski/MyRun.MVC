@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyRun.Application.Race;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace MyRun.Application.Services
 {
     public interface IRaceService
     {
-        Task Create(Domain.Entities.Race race);
+        Task Create(RaceDto race);
     }
 }

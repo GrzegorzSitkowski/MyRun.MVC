@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyRun.Application.Race;
 using MyRun.Application.Services;
 using MyRun.Domain.Interfaces;
 
@@ -20,7 +21,7 @@ namespace MyRun.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Domain.Entities.Race race)
+        public async Task<IActionResult> Create(RaceDto race)
         {
             await _raceService.Create(race);
             return RedirectToAction(nameof(Create));
