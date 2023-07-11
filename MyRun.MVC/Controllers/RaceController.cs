@@ -1,13 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyRun.Application.Services;
+using MyRun.Domain.Interfaces;
 
 namespace MyRun.MVC.Controllers
 {
     public class RaceController : Controller
     {
-        [HttpPost]
-        public IActionResult Create(Domain.Entities.Race race)
+        private readonly IRaceService _raceService;
+
+        public RaceController(IRaceService raceService)
+        {
+            _raceService = raceService;
+        }
+
+        //CREATE
+        public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Domain.Entities.Race race)
+        {
+            await _raceService.Create(race);
+            return RedirectToAction(nameof(Create));
+        }
+        //CREATE
     }
 }
