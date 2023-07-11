@@ -25,7 +25,7 @@ namespace MyRun.MVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(race);
             }
 
             await _raceService.Create(race);

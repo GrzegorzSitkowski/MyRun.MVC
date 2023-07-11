@@ -12,6 +12,7 @@
             <div class="form-group mb-3">
                 <label class="control-label" asp-for="Name">Name</label>
                 <input class="form-control" type="text" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label class="control-label" asp-for="Country">Country</label>
@@ -32,6 +33,7 @@
             <div class="form-group mb-3">
                 <label class="control-label" asp-for="Distance">Distance</label>
                 <input class="form-control" type="text" asp-for="Distance" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label class="control-label" asp-for="Result">Result</label>
