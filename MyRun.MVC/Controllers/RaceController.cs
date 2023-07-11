@@ -23,6 +23,11 @@ namespace MyRun.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RaceDto race)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             await _raceService.Create(race);
             return RedirectToAction(nameof(Create));
         }
