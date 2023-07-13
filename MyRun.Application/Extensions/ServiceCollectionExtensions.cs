@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
 using MyRun.Application.Mappings;
+using MyRun.Application.Race;
 using MyRun.Application.Services;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,10 @@ namespace MyRun.Application.Extensions
             services.AddScoped<IRaceService, RaceService>();
 
             services.AddAutoMapper(typeof(MyRunMappingProfile));
+
+            services.AddValidatorsFromAssemblyContaining<RaceDtoValidator>()
+                .AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters();
         }
     }
 }
