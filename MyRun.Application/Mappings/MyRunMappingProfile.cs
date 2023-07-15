@@ -12,7 +12,7 @@ namespace MyRun.Application.Mappings
     {
         public MyRunMappingProfile()
         {
-            CreateMap<RaceDto, Domain.Entities.Race>();
+            CreateMap<RaceDto, Domain.Entities.Race>().ReverseMap();
         }
     }
 }

@@ -34,10 +34,10 @@ namespace MyRun.MVC.Controllers
         //CREATE
 
         //GET ALL
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var races = _raceService.GetAll();
-            return View();
+            var races = await _raceService.GetAll();
+            return View(races);
         }
         //GET ALL
     }
