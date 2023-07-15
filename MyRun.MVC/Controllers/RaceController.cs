@@ -1,23 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using MyRun.Application.Race;
-using MyRun.Application.Services;
+using MyRun.Application.Race.Commands.CreateRace;
+using MyRun.Application.Race.Queries.GetAllRaces;
 using MyRun.Domain.Interfaces;
 
 namespace MyRun.MVC.Controllers
 {
     public class RaceController : Controller
     {
-        private readonly IRaceService _raceService;
+        private readonly IMediator _mediator;
 
-        public RaceController(IRaceService raceService)
+        public RaceController(IMediator mediatr)
         {
-            _raceService = raceService;
+            _mediator = mediatr;
         }
 
         //GET ALL
         public async Task<IActionResult> Index()
         {
-            var races = await _raceService.GetAll();
+            var races = await _mediator.Send(new GetAllRacesQuery());
             return View(races);
         }
         //GET ALL
@@ -29,14 +31,14 @@ namespace MyRun.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(RaceDto race)
+        public async Task<IActionResult> Create(CreateRaceCommand command)
         {
             if (!ModelState.IsValid)
             {
-                return View(race);
+                return View(command);
             }
 
-            await _raceService.Create(race);
+            await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
         //CREATE
