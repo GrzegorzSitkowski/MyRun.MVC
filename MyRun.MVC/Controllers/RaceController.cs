@@ -32,5 +32,13 @@ namespace MyRun.MVC.Controllers
             return RedirectToAction(nameof(Create));
         }
         //CREATE
+
+        //GET ALL
+        public IActionResult Index()
+        {
+            var races = _raceService.GetAll();
+            return View();
+        }
+        //GET ALL
     }
 }
