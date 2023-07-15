@@ -9,5 +9,6 @@ namespace MyRun.Domain.Interfaces
     public interface IRaceRepository
     {
         Task Create(Entities.Race race);
+        Task<IEnumerable<Domain.Entities.Race>> GetAll();
     }
 }
