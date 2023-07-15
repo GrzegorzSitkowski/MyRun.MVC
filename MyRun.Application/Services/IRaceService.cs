@@ -10,5 +10,6 @@ namespace MyRun.Application.Services
     public interface IRaceService
     {
         Task Create(RaceDto race);
+        Task<IEnumerable<RaceDto>> GetAll();
     }
 }
