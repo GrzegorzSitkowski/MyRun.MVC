@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using MyRun.Application.Mappings;
 using MyRun.Application.Race.Commands.CreateRace;
-using MyRun.Application.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace MyRun.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IRaceService, RaceService>();
+            services.AddMediatR(typeof(CreateRaceCommand));
 
             services.AddAutoMapper(typeof(MyRunMappingProfile));
 
