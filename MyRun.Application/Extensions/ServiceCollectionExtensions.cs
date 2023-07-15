@@ -2,7 +2,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyRun.Application.Mappings;
-using MyRun.Application.Race;
+using MyRun.Application.Race.Commands.CreateRace;
 using MyRun.Application.Services;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace MyRun.Application.Extensions
 
             services.AddAutoMapper(typeof(MyRunMappingProfile));
 
-            services.AddValidatorsFromAssemblyContaining<RaceDtoValidator>()
+            services.AddValidatorsFromAssemblyContaining<CreateRaceCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
         }
