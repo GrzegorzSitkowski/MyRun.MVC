@@ -14,6 +14,14 @@ namespace MyRun.MVC.Controllers
             _raceService = raceService;
         }
 
+        //GET ALL
+        public async Task<IActionResult> Index()
+        {
+            var races = await _raceService.GetAll();
+            return View(races);
+        }
+        //GET ALL
+
         //CREATE
         public IActionResult Create()
         {
@@ -29,16 +37,9 @@ namespace MyRun.MVC.Controllers
             }
 
             await _raceService.Create(race);
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(Index));
         }
         //CREATE
-
-        //GET ALL
-        public async Task<IActionResult> Index()
-        {
-            var races = await _raceService.GetAll();
-            return View(races);
-        }
-        //GET ALL
     }
+        
 }
