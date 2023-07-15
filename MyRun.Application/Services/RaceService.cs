@@ -26,5 +26,13 @@ namespace MyRun.Application.Services
 
             await _raceRepository.Create(race);
         }
+
+        public async Task<IEnumerable<RaceDto>> GetAll()
+        {
+            var races = await _raceRepository.GetAll();
+            var dtos = _mapper.Map<IEnumerable<RaceDto>>(races);
+
+            return dtos;
+        }
     }
 }
