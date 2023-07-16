@@ -26,6 +26,7 @@ namespace MyRun.MVC.Controllers
         //GET ALL
 
         //GET DETAILS
+        [Route("CarWorkshop/{id}/Details")]
         public async Task<IActionResult> Details(int id)
         {
             var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
