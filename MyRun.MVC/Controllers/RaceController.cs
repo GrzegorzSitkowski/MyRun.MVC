@@ -24,6 +24,13 @@ namespace MyRun.MVC.Controllers
         }
         //GET ALL
 
+        //GET ONE
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
+        //GET ONE
+
         //CREATE
         public IActionResult Create()
         {
