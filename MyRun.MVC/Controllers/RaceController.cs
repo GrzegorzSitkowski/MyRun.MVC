@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.CreateRace;
 using MyRun.Application.Race.Queries.GetAllRaces;
+using MyRun.Application.Race.Queries.GetRaceDetails;
 using MyRun.Domain.Interfaces;
 
 namespace MyRun.MVC.Controllers
@@ -24,12 +25,13 @@ namespace MyRun.MVC.Controllers
         }
         //GET ALL
 
-        //GET ONE
-        public IActionResult Details(int id)
+        //GET DETAILS
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
+            return View(dto);
         }
-        //GET ONE
+        //GET DETAILS
 
         //CREATE
         public IActionResult Create()
