@@ -10,5 +10,6 @@ namespace MyRun.Domain.Interfaces
     {
         Task Create(Entities.Race race);
         Task<IEnumerable<Domain.Entities.Race>> GetAll();
+        Task<Domain.Entities.Race> GetById(string id);
     }
 }
