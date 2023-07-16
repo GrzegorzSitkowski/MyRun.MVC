@@ -26,5 +26,8 @@ namespace MyRun.Infrastructure.Repositories
 
         public async Task<IEnumerable<Race>> GetAll()
             => await _dbContext.Races.ToListAsync();
+
+        public async Task<Race> GetById(int id)
+            => await _dbContext.Races.FirstAsync(c => c.Id == id);
     }
 }
