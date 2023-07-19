@@ -52,6 +52,15 @@ namespace MyRun.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
         //CREATE
+
+        //EDIT
+        [Route("CarWorkshop/{id}/Edit")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
+            return View(dto);
+        }
+        //EDIT
     }
         
 }
