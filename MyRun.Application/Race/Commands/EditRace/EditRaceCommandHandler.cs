@@ -31,6 +31,9 @@ namespace MyRun.Application.Race.Commands.EditRace
             race.AveragePace = request.AveragePace;
             race.Date = request.Date;
             race.Note = request.Note;
+
+            await _raceRepository.Commit();
+            return Unit.Value;
         }
     }
 }
