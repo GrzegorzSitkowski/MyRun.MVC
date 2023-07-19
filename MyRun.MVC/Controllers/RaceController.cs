@@ -64,7 +64,7 @@ namespace MyRun.MVC.Controllers
             var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
 
             EditRaceCommand model = _mapper.Map<EditRaceCommand>(dto);
-            return View(dto);
+            return View(model);
         }
         //EDIT
     }
