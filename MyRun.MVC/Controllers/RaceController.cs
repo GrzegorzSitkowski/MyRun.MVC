@@ -66,6 +66,19 @@ namespace MyRun.MVC.Controllers
             EditRaceCommand model = _mapper.Map<EditRaceCommand>(dto);
             return View(model);
         }
+
+        [HttpPost]
+        [Route("CarWorkshop/{id}/Edit")]
+        public async Task<IActionResult> Edit(int id, EditRaceCommand command)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(command);
+            }
+
+            await _mediator.Send(command);
+            return RedirectToAction(nameof(Index));
+        }
         //EDIT
     }
         
