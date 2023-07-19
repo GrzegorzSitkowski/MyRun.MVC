@@ -1,7 +1,9 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.CreateRace;
+using MyRun.Application.Race.Commands.EditRace;
 using MyRun.Application.Race.Queries.GetAllRaces;
 using MyRun.Application.Race.Queries.GetRaceDetails;
 using MyRun.Domain.Interfaces;
@@ -11,10 +13,12 @@ namespace MyRun.MVC.Controllers
     public class RaceController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public RaceController(IMediator mediatr)
+        public RaceController(IMediator mediatr, IMapper mapper)
         {
             _mediator = mediatr;
+            _mapper = mapper;
         }
 
         //GET ALL
@@ -58,6 +62,8 @@ namespace MyRun.MVC.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
+
+            EditRaceCommand model = _mapper.Map<EditRaceCommand>(dto);
             return View(dto);
         }
         //EDIT
