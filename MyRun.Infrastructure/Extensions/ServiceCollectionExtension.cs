@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyRun.Domain.Interfaces;
 using MyRun.Infrastructure.Persistance;
+using MyRun.Infrastructure.Repositories;
 using MyRun.Infrastructure.Seeders;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,8 @@ namespace MyRun.Infrastructure.Extensions
             services.AddScoped<RaceSeeder>();
             services.AddScoped<RunnerProfileSeeder>();
             services.AddScoped<WorkoutSeeder>();
+
+            services.AddScoped<IRaceRepository, RaceRepository>();
         }
     }
 }

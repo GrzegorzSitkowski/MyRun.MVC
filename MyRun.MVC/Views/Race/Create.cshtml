@@ -1,0 +1,68 @@
+﻿@using MyRun.Application.Race.Commands.CreateRace;
+
+@model CreateRaceCommand
+
+<h1>Add race</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form action="/Race/Create" method="post">
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Name">Name</label>
+                <input class="form-control" type="text" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Country">Country</label>
+                <input class="form-control" type="text" asp-for="Country" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="City">City</label>
+                <input class="form-control" type="text" asp-for="City" />
+                <span asp-validation-for="City" class="text-danger"></span>
+
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Number">Number</label>
+                <input class="form-control" type="text" asp-for="Number" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Place">Place</label>
+                <input class="form-control" type="text" asp-for="Place" />
+                <span asp-validation-for="Place" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Distance">Distance</label>
+                <input class="form-control" type="text" asp-for="Distance" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Result">Result</label>
+                <input class="form-control" type="text" asp-for="Result" />
+                <span asp-validation-for="Result" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="AveragePace">AveragePace</label>
+                <input class="form-control" type="text" asp-for="AveragePace" />
+                <span asp-validation-for="AveragePace" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Date">Date</label>
+                <input class="form-control" type="date" asp-for="Date" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label" asp-for="Note">Note</label>
+                <input class="form-control" type="text" asp-for="Note" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

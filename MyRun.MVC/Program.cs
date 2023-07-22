@@ -1,15 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using MyRun.Infrastructure.Persistance;
 using MyRun.Infrastructure.Extensions;
 using MyRun.Infrastructure.Seeders;
+using MyRun.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
