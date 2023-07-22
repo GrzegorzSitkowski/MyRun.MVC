@@ -33,5 +33,15 @@ namespace MyRun.Infrastructure.Repositories
 
         public async Task<Race> GetById(int id)
             => await _dbContext.Races.FirstAsync(c => c.Id == id);
+
+        public async Task Delete(int id)
+        {
+            var race = _dbContext.Races.Find(id);
+            if(race != null)
+            {
+                _dbContext.Races.Remove(race);
+                await _dbContext.SaveChangesAsync();
+            }     
+        }
     }
 }
