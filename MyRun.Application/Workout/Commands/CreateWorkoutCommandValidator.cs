@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MyRun.Application.Workout.Commands
 {
-    public class CreateWorkoutValidator : AbstractValidator<CreateWorkoutCommand>
+    public class CreateWorkoutCommandValidator : AbstractValidator<CreateWorkoutCommand>
     {
-        public CreateWorkoutValidator()
+        public CreateWorkoutCommandValidator()
         {
             RuleFor(c => c.Distance).NotEmpty();
             RuleFor(c => c.Result).MaximumLength(10);
