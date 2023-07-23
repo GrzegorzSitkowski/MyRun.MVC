@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using MyRun.Application.Mappings;
 using MyRun.Application.Race.Commands.CreateRace;
-using MyRun.Application.Workout.Commands;
+using MyRun.Application.Workout.Commands.CreateWorkout;
 using System;
 using System.Collections.Generic;
 using System.Linq;

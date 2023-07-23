@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using MyRun.Application.Workout.Commands;
+using MyRun.Application.Workout.Commands.CreateWorkout;
 
 namespace MyRun.MVC.Controllers
 {
