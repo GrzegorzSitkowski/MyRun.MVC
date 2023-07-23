@@ -27,6 +27,7 @@ namespace MyRun.Infrastructure.Extensions
             services.AddScoped<WorkoutSeeder>();
 
             services.AddScoped<IRaceRepository, RaceRepository>();
+            services.AddScoped<IWorkoutRepository, WorkoutRepository>();
         }
     }
 }

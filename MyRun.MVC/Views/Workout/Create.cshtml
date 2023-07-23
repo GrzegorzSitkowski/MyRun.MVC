@@ -1,0 +1,59 @@
+﻿@using MyRun.Application.Workout.Commands.CreateWorkout;
+
+@model CreateWorkoutCommand
+
+
+<h1>Add new workout</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Distance" class="control-label"></label>
+                <input asp-for="Distance" class="form-control" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Result" class="control-label"></label>
+                <input asp-for="Result" class="form-control" />
+                <span asp-validation-for="Result" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="AveragePace" class="control-label"></label>
+                <input asp-for="AveragePace" class="form-control" />
+                <span asp-validation-for="AveragePace" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="MaxPace" class="control-label"></label>
+                <input asp-for="MaxPace" class="form-control" />
+                <span asp-validation-for="MaxPace" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Calories" class="control-label"></label>
+                <input asp-for="Calories" class="form-control" />
+                <span asp-validation-for="Calories" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="MapPhoto" class="control-label"></label>
+                <input asp-for="MapPhoto" class="form-control" />
+                <span asp-validation-for="MapPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
