@@ -10,5 +10,6 @@ namespace MyRun.Domain.Interfaces
     {
         Task Create(Domain.Entities.Workout workout);
         Task<IEnumerable<Domain.Entities.Workout>> GetAll();
+        Task<Domain.Entities.Workout> GetById(int id);
     }
 }
