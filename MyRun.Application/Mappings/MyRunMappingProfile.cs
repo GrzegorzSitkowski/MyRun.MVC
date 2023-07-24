@@ -2,6 +2,7 @@
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.EditRace;
 using MyRun.Application.Workout;
+using MyRun.Application.Workout.Commands.EditWorkout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace MyRun.Application.Mappings
             CreateMap<WorkoutDto, Domain.Entities.Workout>().ReverseMap();
 
             CreateMap<RaceDto, EditRaceCommand>();
+            CreateMap<WorkoutDto, EditWorkoutCommand>();
         }
     }
 }
