@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRun.Application.Workout.Commands.CreateWorkout;
+using MyRun.Application.Workout.Queries.GetAllWorkouts;
 
 namespace MyRun.MVC.Controllers
 {
@@ -16,11 +17,14 @@ namespace MyRun.MVC.Controllers
             _mediator = mediator;
             _mapper = mapper;
         }
-
-        public IActionResult Index()
+        
+        //GET ALL
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var workouts = await _mediator.Send(new GetAllWorkoutsQuery);
+            return View(workouts);
         }
+        //GET ALL
 
         //CREATE
         public IActionResult Create()
@@ -37,7 +41,7 @@ namespace MyRun.MVC.Controllers
             }
 
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(Index));
         }
         //CREATE
     }
