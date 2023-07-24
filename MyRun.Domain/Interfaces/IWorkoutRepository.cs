@@ -9,5 +9,6 @@ namespace MyRun.Domain.Interfaces
     public interface IWorkoutRepository
     {
         Task Create(Domain.Entities.Workout workout);
+        Task<IEnumerable<Domain.Entities.Workout>> GetAll();
     }
 }
