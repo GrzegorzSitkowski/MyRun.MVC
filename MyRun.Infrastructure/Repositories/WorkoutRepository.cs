@@ -1,4 +1,5 @@
-﻿using MyRun.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyRun.Domain.Entities;
 using MyRun.Domain.Interfaces;
 using MyRun.Infrastructure.Persistance;
 using System;
@@ -26,6 +27,8 @@ namespace MyRun.Infrastructure.Repositories
             _dbContext.Add(workout);
             await _dbContext.SaveChangesAsync();
         }
-            
+
+        public async Task<IEnumerable<Workout>> GetAll()
+            => await _dbContext.Workouts.ToListAsync();
     }
 }
