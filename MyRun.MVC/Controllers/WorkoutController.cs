@@ -21,7 +21,7 @@ namespace MyRun.MVC.Controllers
         //GET ALL
         public async Task<IActionResult> Index()
         {
-            var workouts = await _mediator.Send(new GetAllWorkoutsQuery);
+            var workouts = await _mediator.Send(new GetAllWorkoutsQuery());
             return View(workouts);
         }
         //GET ALL

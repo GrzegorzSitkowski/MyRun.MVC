@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MyRun.Application.Workout.WorkoutDto>
+
+@{
+    ViewData["Title"] = "Workouts";
+}
+
+<h1>Workouts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-secondary">Add new</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@item.Distance</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Result</h6>
+                <p class="card-text">@item.AveragePace</p>
+                <p class="card-text">@item.Date</p>
+                <a class="btn btn-primary" asp-controller="Workout" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-outline-secondary" asp-controller="Workout" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            </div>
+        </div>
+    }
+</div>
