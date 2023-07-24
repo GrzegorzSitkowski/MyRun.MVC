@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRun.Application.Workout.Commands.CreateWorkout;
 using MyRun.Application.Workout.Queries.GetAllWorkouts;
+using MyRun.Application.Workout.Queries.GetWorkoutDetails;
 
 namespace MyRun.MVC.Controllers
 {
@@ -25,6 +26,15 @@ namespace MyRun.MVC.Controllers
             return View(workouts);
         }
         //GET ALL
+
+        //GET DETAILS
+        [Route("Workout/{id}/Details")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var dto = await _mediator.Send(new GetWorkoutDetailsQuery(id));
+            return View(dto);
+        }
+        //GET DETAILS
 
         //CREATE
         public IActionResult Create()
