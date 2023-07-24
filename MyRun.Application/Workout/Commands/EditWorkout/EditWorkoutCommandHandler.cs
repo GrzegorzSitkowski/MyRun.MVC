@@ -30,7 +30,7 @@ namespace MyRun.Application.Workout.Commands.EditWorkout
             workout.MaxPace = request.MaxPace;
             workout.Date = request.Date;
             workout.Calories = request.Calories;
-            workout.Note = workout.Note;
+            workout.Note = request.Note;
 
             await _workoutRepository.Commit();
 
