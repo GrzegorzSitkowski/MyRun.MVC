@@ -30,5 +30,8 @@ namespace MyRun.Infrastructure.Repositories
 
         public async Task<IEnumerable<Workout>> GetAll()
             => await _dbContext.Workouts.ToListAsync();
+
+        public async Task<Workout> GetById(int id)
+            => await _dbContext.Workouts.FirstAsync(c => c.Id == id);
     }
 }
