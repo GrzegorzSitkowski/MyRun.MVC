@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRun.Application.Workout.Commands.CreateWorkout;
+using MyRun.Application.Workout.Commands.EditWorkout;
 using MyRun.Application.Workout.Queries.GetAllWorkouts;
 using MyRun.Application.Workout.Queries.GetWorkoutDetails;
 
@@ -54,5 +55,28 @@ namespace MyRun.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
         //CREATE
+
+        //EDIT
+        [Route("Workout/{id}/Edit")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var dto = await _mediator.Send(new GetWorkoutDetailsQuery(id));
+
+            EditWorkoutCommand model = _mapper.Map<EditWorkoutCommand>(dto);
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("Workout/{id}/Edit")]
+        public async Task<IActionResult> Edit(int id, EditWorkoutCommand command)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(command);
+            }
+            await _mediator.Send(command);
+            return RedirectToAction(nameof(Index));
+        }
+        //EDIT
     }
 }
