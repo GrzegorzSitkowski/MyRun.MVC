@@ -28,6 +28,17 @@ namespace MyRun.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task Delete(int id)
+        {
+            var workout = _dbContext.Workouts.Find(id);
+
+            if(workout != null)
+            {
+                _dbContext.Workouts.Remove(workout);
+                await _dbContext.SaveChangesAsync();
+            }    
+        }
+
         public async Task<IEnumerable<Workout>> GetAll()
             => await _dbContext.Workouts.ToListAsync();
 
