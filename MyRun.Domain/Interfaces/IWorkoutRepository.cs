@@ -12,5 +12,6 @@ namespace MyRun.Domain.Interfaces
         Task<IEnumerable<Domain.Entities.Workout>> GetAll();
         Task<Domain.Entities.Workout> GetById(int id);
         Task Commit();
+        Task Delete(int id);
     }
 }
