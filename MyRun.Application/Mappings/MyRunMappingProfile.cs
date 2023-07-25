@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.EditRace;
+using MyRun.Application.RunnerProfile;
 using MyRun.Application.Workout;
 using MyRun.Application.Workout.Commands.EditWorkout;
 using System;
@@ -17,6 +18,7 @@ namespace MyRun.Application.Mappings
         {
             CreateMap<RaceDto, Domain.Entities.Race>().ReverseMap();
             CreateMap<WorkoutDto, Domain.Entities.Workout>().ReverseMap();
+            CreateMap<RunnerProfileDto, Domain.Entities.RunnerProfile>().ReverseMap();
 
             CreateMap<RaceDto, EditRaceCommand>();
             CreateMap<WorkoutDto, EditWorkoutCommand>();
