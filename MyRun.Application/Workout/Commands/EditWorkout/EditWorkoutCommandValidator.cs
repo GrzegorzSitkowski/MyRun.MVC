@@ -19,5 +19,4 @@ namespace MyRun.Application.Workout.Commands.EditWorkout
             RuleFor(c => c.Note).MaximumLength(20);
         }
     }
-    }
 }
