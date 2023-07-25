@@ -28,6 +28,7 @@ namespace MyRun.Infrastructure.Extensions
 
             services.AddScoped<IRaceRepository, RaceRepository>();
             services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+            services.AddScoped<IRunnerProfileRepository, RunnerProfileRepository>();
         }
     }
 }
