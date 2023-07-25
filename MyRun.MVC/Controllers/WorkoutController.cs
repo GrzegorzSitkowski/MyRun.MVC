@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRun.Application.Workout.Commands.CreateWorkout;
+using MyRun.Application.Workout.Commands.DeleteWorkout;
 using MyRun.Application.Workout.Commands.EditWorkout;
 using MyRun.Application.Workout.Queries.GetAllWorkouts;
 using MyRun.Application.Workout.Queries.GetWorkoutDetails;
@@ -78,5 +79,15 @@ namespace MyRun.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
         //EDIT
+
+        //DELETE
+        [Route("Workout/{id}/Delete")]
+        public async Task<IActionResult> Delete(DeleteWorkoutCommand command)
+        {
+            await _mediator.Send(command);
+
+            return RedirectToAction(nameof(Index));
+        }
+        //DELETE
     }
 }
