@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyRun.Application.RunnerProfile.Query.GetRunnerProfile
 {
-    public class RunnerProfileDetailsQuery: RunnerProfileDto, IRequest
+    public class GetRunnerProfileQuery: RunnerProfileDto, IRequest
     {
     }
 }
