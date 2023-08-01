@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyRun.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace MyRun.Domain.Interfaces
 {
     public interface IRunnerProfileRepository
     {
-        Task<Domain.Entities.RunnerProfile> GetProfile();
+        Task Create(RunnerProfile runnerProfile);
+        Task<RunnerProfile> GetProfile();
     }
 }
