@@ -17,6 +17,13 @@ namespace MyRun.Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
+
+        public async Task Create(RunnerProfile runnerProfile)
+        {
+            _dbContext.Add(runnerProfile);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<RunnerProfile> GetProfile()
             => await _dbContext.RunnerProfiles.FindAsync();
             
