@@ -2,6 +2,7 @@
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.EditRace;
 using MyRun.Application.RunnerProfile;
+using MyRun.Application.RunnerProfile.Commands.EditRunnerProfile;
 using MyRun.Application.Workout;
 using MyRun.Application.Workout.Commands.EditWorkout;
 using System;
@@ -22,6 +23,7 @@ namespace MyRun.Application.Mappings
 
             CreateMap<RaceDto, EditRaceCommand>();
             CreateMap<WorkoutDto, EditWorkoutCommand>();
+            CreateMap<RunnerProfileDto, EditRunnerProfileCommand>();
         }
     }
 }

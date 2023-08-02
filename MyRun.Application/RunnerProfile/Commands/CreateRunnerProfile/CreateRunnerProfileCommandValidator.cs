@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MyRun.Application.RunnerProfile.Commands.CreateRunnerProfile
 {
-    public  class CreateRunnerProfileValidator : AbstractValidator<CreateRunnerProfileCommand>
+    public  class CreateRunnerProfileCommandValidator : AbstractValidator<CreateRunnerProfileCommand>
     {
-        public CreateRunnerProfileValidator()
+        public CreateRunnerProfileCommandValidator()
         {
             RuleFor(c => c.FullName).NotEmpty().MaximumLength(30);
             RuleFor(c => c.Weight).MaximumLength(4);
