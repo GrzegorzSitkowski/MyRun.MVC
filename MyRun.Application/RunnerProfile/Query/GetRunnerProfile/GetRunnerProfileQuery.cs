@@ -9,5 +9,11 @@ namespace MyRun.Application.RunnerProfile.Query.GetRunnerProfile
 {
     public class GetRunnerProfileQuery: IRequest<RunnerProfileDto>
     {
+        public int _id { get; set; }
+
+        public GetRunnerProfileQuery(int id)
+        {
+            _id = id;
+        }
     }
 }
