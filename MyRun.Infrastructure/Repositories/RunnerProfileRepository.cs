@@ -27,6 +27,9 @@ namespace MyRun.Infrastructure.Repositories
 
         public async Task<RunnerProfile> GetProfile(int id)
             => await _dbContext.RunnerProfiles.FirstAsync(c => c.Id == id);
+
+        public Task Commit()
+            => _dbContext.SaveChangesAsync();
             
     }
 }
