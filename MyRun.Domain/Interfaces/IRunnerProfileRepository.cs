@@ -10,6 +10,7 @@ namespace MyRun.Domain.Interfaces
     public interface IRunnerProfileRepository
     {
         Task Create(RunnerProfile runnerProfile);
-        Task<RunnerProfile> GetProfile();
+        Task<RunnerProfile> GetProfile(int id);
+        Task Commit();
     }
 }
