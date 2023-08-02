@@ -17,7 +17,7 @@ namespace MyRun.Application.RunnerProfile.Query.GetRunnerProfile
 
         public async Task<RunnerProfileDto> Handle(GetRunnerProfileQuery request, CancellationToken cancellationToken)
         {
-            var runnerProfile = await _repository.GetProfile();
+            var runnerProfile = await _repository.GetProfile(request._id);
 
             var dto = _mapper.Map<RunnerProfileDto>(runnerProfile);
 
