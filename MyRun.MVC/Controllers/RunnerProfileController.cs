@@ -37,9 +37,10 @@ namespace MyRun.MVC.Controllers
         //CREATE
 
         //GET PROFILE
-        public async Task<IActionResult> Index()
+        [Route("RunnerProfile/{id}/Details")]
+        public async Task<IActionResult> Index(int id)
         {
-            var dto = await _mediator.Send(new GetRunnerProfileQuery());
+            var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
             return View(dto);
         }
         //GET PROFILE
