@@ -1,4 +1,5 @@
-﻿using MyRun.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyRun.Domain.Entities;
 using MyRun.Domain.Interfaces;
 using MyRun.Infrastructure.Persistance;
 using System;
@@ -24,8 +25,8 @@ namespace MyRun.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<RunnerProfile> GetProfile()
-            => await _dbContext.RunnerProfiles.FindAsync();
+        public async Task<RunnerProfile> GetProfile(int id)
+            => await _dbContext.RunnerProfiles.FirstAsync(c => c.Id == id);
             
     }
 }
