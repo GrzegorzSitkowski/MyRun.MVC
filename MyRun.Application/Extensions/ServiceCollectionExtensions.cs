@@ -32,7 +32,7 @@ namespace MyRun.Application.Extensions
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
 
-            services.AddValidatorsFromAssemblyContaining<CreateRunnerProfileValidator>()
+            services.AddValidatorsFromAssemblyContaining<CreateRunnerProfileCommandValidator>()
                 .AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters();
         }
