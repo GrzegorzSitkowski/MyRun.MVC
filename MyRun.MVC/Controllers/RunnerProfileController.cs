@@ -64,7 +64,7 @@ namespace MyRun.MVC.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Details));
         }
         //EDIT
     }
