@@ -1,0 +1,76 @@
+﻿@model MyRun.Application.RunnerProfile.RunnerProfileDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Your profile</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pb5k)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pb5k)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pb10k)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pb10k)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PbHalfMarathon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PbHalfMarathon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PbFullMarathon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PbFullMarathon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.About)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhotoUrl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Accomplishments)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Accomplishments)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-secondary" asp-controller="RunnerProfile" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>
