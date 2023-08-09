@@ -20,5 +20,8 @@ namespace MyRun.Domain.Entities
         public DateTime? Date { get; set; }
         public string? Note { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public string? CreatedById { get; set; }
+        public IdentityUser? CreatedBy { get; set; }
     }
 }
