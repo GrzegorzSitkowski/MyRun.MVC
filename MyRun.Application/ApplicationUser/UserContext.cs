@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace MyRun.Application.ApplicationUser
 {
-    public class UserContext
+    public interface IUserContext
+    {
+        CurrentUser GetCurrentUser();
+    }
+
+    public class UserContext : IUserContext
     {
         private readonly HttpContextAccessor _httpContextAccessor;
 
