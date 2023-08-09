@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRun.MVC", "MyRun.MVC\MyRun.MVC.csproj", "{4D21D222-2989-427A-A94A-40A2DEBAE8FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRun.Domain", "MyRun.Domain\MyRun.Domain.csproj", "{2D72B1CE-A5EF-47A6-A31E-02595F3CF734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRun.Domain", "MyRun.Domain\MyRun.Domain.csproj", "{2D72B1CE-A5EF-47A6-A31E-02595F3CF734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRun.Application", "MyRun.Application\MyRun.Application.csproj", "{B7FDA7D0-57ED-4298-920E-110FB30574C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRun.Application", "MyRun.Application\MyRun.Application.csproj", "{B7FDA7D0-57ED-4298-920E-110FB30574C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRun.Infrastructure", "MyRun.Infrastructure\MyRun.Infrastructure.csproj", "{B00DC79A-37D8-4E6E-93C0-1B2A0967AAA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRun.Infrastructure", "MyRun.Infrastructure\MyRun.Infrastructure.csproj", "{B00DC79A-37D8-4E6E-93C0-1B2A0967AAA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

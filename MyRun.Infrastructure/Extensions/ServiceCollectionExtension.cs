@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyRun.Domain.Interfaces;
@@ -21,6 +22,9 @@ namespace MyRun.Infrastructure.Extensions
             services.AddDbContext<MyRunDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("MyRun")));
             //Register DbContext and get ConnectionString
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<MyRunDbContext>();
 
             services.AddScoped<RaceSeeder>();
             services.AddScoped<RunnerProfileSeeder>();
