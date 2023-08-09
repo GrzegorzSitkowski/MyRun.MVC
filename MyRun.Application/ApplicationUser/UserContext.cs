@@ -10,14 +10,14 @@ namespace MyRun.Application.ApplicationUser
 {
     public interface IUserContext
     {
-        CurrentUser GetCurrentUser();
+        CurrentUser? GetCurrentUser();
     }
 
     public class UserContext : IUserContext
     {
-        private readonly HttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserContext(HttpContextAccessor httpContextAccessor)
+        public UserContext(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }
