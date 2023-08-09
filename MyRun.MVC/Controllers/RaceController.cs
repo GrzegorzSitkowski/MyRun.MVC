@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.CreateRace;
@@ -40,12 +41,14 @@ namespace MyRun.MVC.Controllers
         //GET DETAILS
 
         //CREATE
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateRaceCommand command)
         {
             if (!ModelState.IsValid)
