@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyRun.Application.Workout.Commands.CreateWorkout;
@@ -39,12 +40,14 @@ namespace MyRun.MVC.Controllers
         //GET DETAILS
 
         //CREATE
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateWorkoutCommand command)
         {
             if(!ModelState.IsValid)
