@@ -16,7 +16,7 @@ namespace MyRun.Application.Workout.Commands.EditWorkout
             RuleFor(c => c.AveragePace).MaximumLength(10);
             RuleFor(c => c.MaxPace).MaximumLength(10);
             RuleFor(c => c.Calories).MaximumLength(15);
-            RuleFor(c => c.Note).MaximumLength(20);
+            RuleFor(c => c.Note).MaximumLength(50);
         }
     }
 }
