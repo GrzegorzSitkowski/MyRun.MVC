@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyRun.Application.RunnerProfile.Commands.CreateRunnerProfile;
 using MyRun.Application.RunnerProfile.Commands.EditRunnerProfile;
@@ -19,12 +20,14 @@ namespace MyRun.MVC.Controllers
         }
 
         //CREATE
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateRunnerProfileCommand command)
         {
             if (!ModelState.IsValid)
