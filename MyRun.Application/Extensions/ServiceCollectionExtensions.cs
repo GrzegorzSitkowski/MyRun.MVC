@@ -2,6 +2,7 @@
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using MyRun.Application.ApplicationUser;
 using MyRun.Application.Mappings;
 using MyRun.Application.Race.Commands.CreateRace;
 using MyRun.Application.RunnerProfile.Commands.CreateRunnerProfile;
@@ -18,6 +19,7 @@ namespace MyRun.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
+            services.AddScoped<IUserContext, UserContext>();
             services.AddMediatR(typeof(CreateRaceCommand));
             services.AddMediatR(typeof(CreateWorkoutCommand));
             services.AddMediatR(typeof(CreateRunnerProfileCommand));
