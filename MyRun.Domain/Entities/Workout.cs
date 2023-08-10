@@ -20,7 +20,7 @@ namespace MyRun.Domain.Entities
         public string? Note { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public string CreatedById { get; set; }
+        public string? CreatedById { get; set; }
         public IdentityUser? CreatedBy { get; set; }
     }
 }
