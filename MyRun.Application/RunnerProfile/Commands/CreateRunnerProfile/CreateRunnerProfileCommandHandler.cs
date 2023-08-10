@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,19 @@ namespace MyRun.Application.RunnerProfile.Commands.CreateRunnerProfile
     {
         private readonly IRunnerProfileRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IUserContext _userContext;
 
-        public CreateRunnerProfileCommandHandler(IRunnerProfileRepository repository, IMapper mapper)
+        public CreateRunnerProfileCommandHandler(IRunnerProfileRepository repository, IMapper mapper, IUserContext userContext)
         {
             _repository = repository;
             _mapper = mapper;
+            _userContext = userContext;
         }
         public async Task<Unit> Handle(CreateRunnerProfileCommand request, CancellationToken cancellationToken)
         {
             var runnerProfile = _mapper.Map<Domain.Entities.RunnerProfile>(request);
+
+            runnerProfile.CreatedById = _userContext.GetCurrentUser().Id;
 
             await _repository.Create(runnerProfile);
 
