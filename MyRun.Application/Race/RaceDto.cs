@@ -19,5 +19,7 @@ namespace MyRun.Application.Race
         public string? AveragePace { get; set; }
         public DateTime? Date { get; set; }
         public string? Note { get; set; }
+
+        public bool IsEditable { get; set; }
     }
 }
