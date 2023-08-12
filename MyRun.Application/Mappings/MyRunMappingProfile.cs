@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MyRun.Application.ApplicationUser;
 using MyRun.Application.Race;
 using MyRun.Application.Race.Commands.EditRace;
 using MyRun.Application.RunnerProfile;
@@ -15,9 +16,13 @@ namespace MyRun.Application.Mappings
 {
     public class MyRunMappingProfile : Profile
     {
-        public MyRunMappingProfile()
+        public MyRunMappingProfile(IUserContext userContext)
         {
+            var user = userContext.GetCurrentUser();
+
             CreateMap<RaceDto, Domain.Entities.Race>().ReverseMap();
+            CreateMap<Domain.Entities.Race, RaceDto>().
+                ForMember(dto => dto.IsEditable, opt => opt.MapFrom(src => src.CreatedById == user.Id));
             CreateMap<WorkoutDto, Domain.Entities.Workout>().ReverseMap();
             CreateMap<RunnerProfileDto, Domain.Entities.RunnerProfile>().ReverseMap();
 

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,13 @@ namespace MyRun.Application.Extensions
             services.AddMediatR(typeof(CreateWorkoutCommand));
             services.AddMediatR(typeof(CreateRunnerProfileCommand));
 
-            services.AddAutoMapper(typeof(MyRunMappingProfile));
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                var scope = provider.CreateScope();
+                var userContext = scope.ServiceProvider.GetRequiredService<IUserContext>();
+                cfg.AddProfile(new MyRunMappingProfile(userContext));
+            }).CreateMapper()
+            );
 
             services.AddValidatorsFromAssemblyContaining<CreateRaceCommandValidator>()
                 .AddFluentValidationAutoValidation()
