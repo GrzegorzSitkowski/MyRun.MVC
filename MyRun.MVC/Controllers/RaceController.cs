@@ -67,6 +67,11 @@ namespace MyRun.MVC.Controllers
         {
             var dto = await _mediator.Send(new GetRaceDetailsQuery(id));
 
+            if (!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditRaceCommand model = _mapper.Map<EditRaceCommand>(dto);
             return View(model);
         }
