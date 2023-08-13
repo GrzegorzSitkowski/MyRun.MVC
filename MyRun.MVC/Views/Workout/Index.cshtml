@@ -20,7 +20,10 @@
                 <p class="card-text">@item.AveragePace</p>
                 <p class="card-text">@item.Date</p>
                 <a class="btn btn-primary" asp-controller="Workout" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn-outline-secondary" asp-controller="Workout" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                @if (item.IsEditable)
+                {
+                    <a class="btn btn-outline-secondary" asp-controller="Workout" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                }               
             </div>
         </div>
     }
