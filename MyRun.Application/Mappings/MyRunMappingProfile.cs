@@ -25,6 +25,9 @@ namespace MyRun.Application.Mappings
                 ForMember(dto => dto.IsEditable, opt => opt.MapFrom(src => user != null && src.CreatedById == user.Id));
 
             CreateMap<WorkoutDto, Domain.Entities.Workout>().ReverseMap();
+            CreateMap<Domain.Entities.Workout, WorkoutDto>().
+                ForMember(dto => dto.IsEditable, opt => opt.MapFrom(src => user != null && src.CreatedById == user.Id));
+
             CreateMap<RunnerProfileDto, Domain.Entities.RunnerProfile>().ReverseMap();
 
             CreateMap<RaceDto, EditRaceCommand>();
