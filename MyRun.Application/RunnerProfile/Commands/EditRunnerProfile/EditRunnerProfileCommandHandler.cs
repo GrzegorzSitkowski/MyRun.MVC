@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,26 @@ namespace MyRun.Application.RunnerProfile.Commands.EditRunnerProfile
     {
         private readonly IRunnerProfileRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IUserContext _userContext;
 
-        public EditRunnerProfileCommandHandler(IRunnerProfileRepository repository, IMapper mapper)
+        public EditRunnerProfileCommandHandler(IRunnerProfileRepository repository, IMapper mapper, IUserContext userContext)
         {
             _repository = repository;
-            _mapper = mapper; 
+            _mapper = mapper;
+            _userContext = userContext;
         }
 
         public async Task<Unit> Handle(EditRunnerProfileCommand request, CancellationToken cancellationToken)
         {
             var runnerProfile = await _repository.GetProfile(request.Id!);
+
+            var user = _userContext.GetCurrentUser();
+            var isEditable = user != null && runnerProfile.CreatedById == user.Id;
+
+            if (isEditable)
+            {
+                return Unit.Value;
+            }
 
             runnerProfile.FullName = request.FullName;
             runnerProfile.Age = request.Age;
