@@ -66,6 +66,11 @@ namespace MyRun.MVC.Controllers
         {
             var dto = await _mediator.Send(new GetWorkoutDetailsQuery(id));
 
+            if (!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditWorkoutCommand model = _mapper.Map<EditWorkoutCommand>(dto);
             return View(model);
         }
