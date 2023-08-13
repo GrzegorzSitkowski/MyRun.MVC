@@ -17,5 +17,7 @@ namespace MyRun.Application.Workout
         public string? Calories { get; set; }
         public string? MapPhoto { get; set; }
         public string? Note { get; set; }
+
+        public bool IsEditable { get; set; }
     }
 }
