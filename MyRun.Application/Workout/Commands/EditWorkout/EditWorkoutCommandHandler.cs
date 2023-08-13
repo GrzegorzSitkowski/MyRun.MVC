@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,26 @@ namespace MyRun.Application.Workout.Commands.EditWorkout
     {
         private readonly IWorkoutRepository _workoutRepository;
         private readonly IMapper _mapper;
+        private readonly IUserContext _userContext;
 
-        public EditWorkoutCommandHandler(IWorkoutRepository workoutRepository, IMapper mapper)
+        public EditWorkoutCommandHandler(IWorkoutRepository workoutRepository, IMapper mapper, IUserContext userContext)
         {
             _workoutRepository = workoutRepository;
             _mapper = mapper;
+            _userContext = userContext;
         }
 
         public async Task<Unit> Handle(EditWorkoutCommand request, CancellationToken cancellationToken)
         {
             var workout = await _workoutRepository.GetById(request.Id!);
+
+            var user = _userContext.GetCurrentUser();
+            var isEditable = user != null && workout.CreatedById == user.Id;
+
+            if (!isEditable)
+            {
+                return Unit.Value;
+            }
 
             workout.Distance = request.Distance;
             workout.Result = request.Result;

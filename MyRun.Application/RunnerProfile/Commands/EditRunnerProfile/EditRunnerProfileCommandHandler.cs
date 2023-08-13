@@ -30,7 +30,7 @@ namespace MyRun.Application.RunnerProfile.Commands.EditRunnerProfile
             var user = _userContext.GetCurrentUser();
             var isEditable = user != null && runnerProfile.CreatedById == user.Id;
 
-            if (isEditable)
+            if (!isEditable)
             {
                 return Unit.Value;
             }
