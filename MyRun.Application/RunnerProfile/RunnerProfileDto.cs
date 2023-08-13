@@ -19,5 +19,7 @@ namespace MyRun.Application.RunnerProfile
         public string? About { get; set; }
         public string? PhotoUrl { get; set; }
         public string? Accomplishments { get; set; }
+
+        public bool IsEditable { get; set; }
     }
 }
