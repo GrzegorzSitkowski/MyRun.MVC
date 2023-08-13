@@ -54,6 +54,11 @@ namespace MyRun.MVC.Controllers
         {
             var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
 
+            if(!dto.IsEditable)
+            {
+                return RedirectToAction("NoAccess", "Home");
+            }
+
             EditRunnerProfileCommand model = _mapper.Map<EditRunnerProfileCommand>(dto);
             return View(model);
         }
