@@ -9,6 +9,7 @@ using MyRun.Application.Race.Commands.EditRace;
 using MyRun.Application.Race.Queries.GetAllRaces;
 using MyRun.Application.Race.Queries.GetRaceDetails;
 using MyRun.Domain.Interfaces;
+using MyRun.MVC.Extensions;
 using MyRun.MVC.Models;
 using Newtonsoft.Json;
 
@@ -58,7 +59,8 @@ namespace MyRun.MVC.Controllers
                 return View(command);
             }
 
-            //await _mediator.Send(command);        
+            //await _mediator.Send(command);
+            this.SetNotification("success", $"Created race: {command.Name}");
 
             return RedirectToAction(nameof(Index));
         }
