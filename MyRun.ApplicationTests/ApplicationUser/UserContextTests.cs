@@ -13,7 +13,7 @@ namespace MyRun.Application.ApplicationUser.Tests
         [Fact()]
         public void GetCurrentUser_WithAuthenticatedUser_ShouldReturnCurrentUser()
         {
-            Assert.True(false, "This test needs an implementation");
+            var httpContextAccessor = new Mock
         }
     }
 }
