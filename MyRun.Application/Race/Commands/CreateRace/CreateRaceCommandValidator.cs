@@ -17,7 +17,7 @@ namespace MyRun.Application.Race.Commands.CreateRace
             RuleFor(c => c.Number).MaximumLength(10);
             RuleFor(c => c.Place).MaximumLength(10);
             RuleFor(c => c.Distance).NotEmpty().MaximumLength(20);
-            RuleFor(c => c.AveragePace).MaximumLength(5);
+            RuleFor(c => c.AveragePace).MaximumLength(10);
             RuleFor(c => c.Result).MaximumLength(15);
             RuleFor(c => c.Note).MaximumLength(30);
         }
