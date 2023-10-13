@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Interfaces;
 
 namespace MyRun.Application.RunnerProfile.Query.GetRunnerProfile
