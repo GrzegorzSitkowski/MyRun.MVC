@@ -35,7 +35,7 @@ namespace MyRun.MVC.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(Details));
         }
         //CREATE
 
@@ -45,6 +45,10 @@ namespace MyRun.MVC.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
+            if(dto == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }          
             return View(dto);
         }
         //GET PROFILE
