@@ -54,7 +54,7 @@ namespace MyRun.MVC.Controllers
         //GET PROFILE
 
         //EDIT
-        [Route("RunnerProfile/{id}/Edit")]
+        //[Route("RunnerProfile/{id}/Edit")]
         public async Task<IActionResult> Edit (int id)
         {
             var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
@@ -69,7 +69,7 @@ namespace MyRun.MVC.Controllers
         }
 
         [HttpPost]
-        [Route("RunnerProfile/{id}/Edit")]
+        //[Route("RunnerProfile/Edit")]
         public async Task<IActionResult> Edit(int id, EditRunnerProfileCommand command)
         {
             if(!ModelState.IsValid)
