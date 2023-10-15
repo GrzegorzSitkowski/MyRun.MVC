@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Entities;
 using MyRun.Domain.Interfaces;
 using MyRun.Infrastructure.Persistance;
@@ -13,10 +14,12 @@ namespace MyRun.Infrastructure.Repositories
     public class WorkoutRepository : IWorkoutRepository
     {
         private readonly MyRunDbContext _dbContext;
+        private readonly IUserContext _userContext;
 
-        public WorkoutRepository(MyRunDbContext dbContext)
+        public WorkoutRepository(MyRunDbContext dbContext, IUserContext userContext)
         {
             _dbContext = dbContext;
+            _userContext = userContext;
         }
 
         public async Task Commit()
@@ -40,7 +43,7 @@ namespace MyRun.Infrastructure.Repositories
         }
 
         public async Task<IEnumerable<Workout>> GetAll()
-            => await _dbContext.Workouts.ToListAsync();
+            => await _dbContext.Workouts.Where(c => c.CreatedById == _userContext.GetCurrentUser().Id).ToListAsync();
 
         public async Task<Workout> GetById(int id)
             => await _dbContext.Workouts.FirstAsync(c => c.Id == id);
