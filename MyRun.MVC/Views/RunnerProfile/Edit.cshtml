@@ -52,10 +52,8 @@
                 <input asp-for="About" class="form-control" />
                 <span asp-validation-for="About" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PhotoUrl" class="control-label"></label>
-                <input asp-for="PhotoUrl" class="form-control" />
-                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            <div class="form-group 6">
+                  <input type="file" name="PhotoUrl" id="PhotoUrl" onchange="fileCheck(this)"/>  
             </div>
             <div class="form-group">
                 <label asp-for="Accomplishments" class="control-label"></label>
