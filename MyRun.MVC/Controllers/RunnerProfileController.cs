@@ -35,21 +35,26 @@ namespace MyRun.MVC.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
-            return RedirectToAction(nameof(Create));
+            return RedirectToAction(nameof(Details));
         }
         //CREATE
 
         //GET PROFILE
-        [Route("RunnerProfile/{id}/Details")]
+        //[Route("RunnerProfile/{id}/Details")]
+        [Authorize]
         public async Task<IActionResult> Details(int id)
         {
             var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
+            if(dto == null)
+            {
+                return RedirectToAction(nameof(Create));
+            }          
             return View(dto);
         }
         //GET PROFILE
 
         //EDIT
-        [Route("RunnerProfile/{id}/Edit")]
+        //[Route("RunnerProfile/{id}/Edit")]
         public async Task<IActionResult> Edit (int id)
         {
             var dto = await _mediator.Send(new GetRunnerProfileQuery(id));
@@ -64,7 +69,7 @@ namespace MyRun.MVC.Controllers
         }
 
         [HttpPost]
-        [Route("RunnerProfile/{id}/Edit")]
+        //[Route("RunnerProfile/Edit")]
         public async Task<IActionResult> Edit(int id, EditRunnerProfileCommand command)
         {
             if(!ModelState.IsValid)
