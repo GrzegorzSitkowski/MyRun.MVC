@@ -59,7 +59,7 @@ namespace MyRun.MVC.Controllers
                 return View(command);
             }
 
-            //await _mediator.Send(command);
+            await _mediator.Send(command);
             this.SetNotification("success", $"Created race: {command.Name}");
 
             return RedirectToAction(nameof(Index));

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyRun.Application.ApplicationUser;
 using MyRun.Domain.Entities;
 using MyRun.Domain.Interfaces;
 using MyRun.Infrastructure.Persistance;
@@ -13,10 +14,12 @@ namespace MyRun.Infrastructure.Repositories
     public class RaceRepository : IRaceRepository
     {
         private readonly MyRunDbContext _dbContext;
+        private readonly IUserContext _userContext;
 
-        public RaceRepository(MyRunDbContext dbContext)
+        public RaceRepository(MyRunDbContext dbContext, IUserContext userContext)
         {
             _dbContext = dbContext;
+            _userContext = userContext;
         }
 
         public Task Commit()
@@ -29,7 +32,8 @@ namespace MyRun.Infrastructure.Repositories
         }
 
         public async Task<IEnumerable<Race>> GetAll()
-            => await _dbContext.Races.ToListAsync();
+            => await _dbContext.Races.Where(c => c.CreatedById == _userContext.GetCurrentUser().Id).
+            ToListAsync();
 
         public async Task<Race> GetById(int id)
             => await _dbContext.Races.FirstAsync(c => c.Id == id);
